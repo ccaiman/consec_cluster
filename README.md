@@ -4,4 +4,4 @@ An R Shiny app (`app.R`) for processing actigraphy (activity) data (.csv input).
 
 The output is a plot to guide manual threshold setting and downloadable tabular data (.csv output)
 
-The file `ex_data.rdata` contains data to run or troubleshoot the app in lieu of actigraphy data.
+The file `ex_data.rdata` contains default data to run or troubleshoot the app in lieu of actigraphy data.
