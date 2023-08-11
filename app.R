@@ -1,4 +1,5 @@
 
+version <- "v1.0.0"
 
 #use these packages
 library(shiny)
@@ -61,7 +62,7 @@ cons_clust <- function(x) {
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Actigraphy data clustering"),
+    titlePanel(str_glue("Actigraphy data clustering {version}")),
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
