@@ -1,5 +1,5 @@
 
-version <- "v1.0.0"
+version <- "v1.0.1"
 
 #use these packages
 library(shiny)
@@ -11,7 +11,8 @@ library(DescTools)
 cons_clust <- function(x) {
   
   #clustering algorithm with area under the curve (auc)
-  #DescTools::AUC() uses trapezoidal rule for estimating auc
+  #DescTools::AUC() uses trapezoidal rule for estimating *total* auc
+  #Estimating total auc is non-interactive over the entire line
   piv_data_clust <- expr(!!x) |> 
     group_by(name) |> 
     mutate(id = consecutive_id(value)) |> 
@@ -261,6 +262,8 @@ server <- function(input, output, session) {
      ##the output of the function (arbitrary name)
      piv_data_comp |> 
        group_by(name) |> 
+       slice(1) |> 
+       select(!c(time, value, name_id, clust_id, n, clust_time)) |> 
        gt()
    })
    
